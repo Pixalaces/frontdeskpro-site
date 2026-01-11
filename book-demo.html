@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Book a Demo — FrontDesk Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:#0066FF;
+      --teal:#00D9C9;
+      --dark-bg:#0A0E27;
+      --dark-card:#131829;
+      --text-light:#E8EDF5;
+      --text-gray:#9CA3B8;
+      --white:#FFFFFF;
+      --border: rgba(0,217,201,.12);
+      --shadow: 0 22px 70px rgba(0,0,0,.35);
+      --radius: 20px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Work Sans', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-light);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    .container{max-width:1400px;margin:0 auto;padding:0 2rem}
+
+    /* Nav */
+    nav{
+      position:fixed;top:0;width:100%;
+      background: rgba(10,14,39,.95);
+      backdrop-filter: blur(10px);
+      z-index:1000;
+      padding:1.5rem 0;
+      border-bottom:1px solid var(--border);
+    }
+    .nav-content{
+      display:flex;justify-content:space-between;align-items:center;
+      max-width:1400px;margin:0 auto;padding:0 2rem;
+    }
+    .logo{
+      font-family:'DM Serif Display', serif;
+      font-size:1.8rem;color:var(--teal);text-decoration:none;
+    }
+    .nav-links{display:flex;gap:2.5rem;align-items:center}
+    .nav-links a{
+      color:var(--text-light);text-decoration:none;font-weight:500;
+      transition:color .3s;font-size:.95rem;
+    }
+    .nav-links a:hover{color:var(--teal)}
+    .cta-button{
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      color:var(--white);
+      padding:.75rem 1.75rem;border-radius:50px;text-decoration:none;
+      font-weight:600;transition:all .3s;font-size:.95rem;
+      display:inline-flex;align-items:center;justify-content:center;
+    }
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,217,201,.35)}
+
+    /* Hero */
+    .hero{
+      margin-top:80px;
+      padding: 6rem 0 3rem;
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #0D1F3C 55%, #0A2E3E 100%);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:'';
+      position:absolute;top:-45%;right:-25%;
+      width:820px;height:820px;
+      background: radial-gradient(circle, rgba(0,217,201,.14) 0%, transparent 70%);
+      animation: float 20s ease-in-out infinite;
+    }
+    @keyframes float{
+      0%,100%{transform:translate(0,0) rotate(0deg)}
+      50%{transform:translate(-50px,-30px) rotate(5deg)}
+    }
+    .hero-inner{
+      display:grid;grid-template-columns: 1.05fr .95fr;
+      gap:3rem;align-items:center;position:relative;z-index:1;
+    }
+    h1{
+      font-family:'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 4vw, 4.3rem);
+      line-height:1.1;margin-bottom:1rem;letter-spacing:-.5px;
+    }
+    h1 span{
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      font-style: italic;
+    }
+    .hero p{
+      color:var(--text-gray);
+      font-size:1.15rem;
+      max-width:680px;
+    }
+
+    .card{
+      background: var(--dark-card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.6rem;
+    }
+    .card h3{
+      font-family:'DM Serif Display', serif;
+      font-size:1.7rem;
+      margin-bottom:.7rem;
+    }
+    .bullets{list-style:none;display:grid;gap:.75rem;margin-top:.9rem}
+    .bullets li{display:flex;gap:.75rem;align-items:flex-start;color:var(--text-light)}
+    .check{
+      width:26px;height:26px;border-radius:8px;
+      background: rgba(0,217,201,.12);
+      border: 1px solid rgba(0,217,201,.22);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--teal);font-weight:800;flex:0 0 auto;
+    }
+    .muted{color:var(--text-gray);font-size:.98rem}
+
+    /* Main */
+    .section{padding: 4.5rem 0}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items:start;
+    }
+    .panel{
+      background: var(--dark-card);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+    }
+    .panel h2{
+      font-family:'DM Serif Display', serif;
+      font-size:2.2rem;
+      margin-bottom:.6rem;
+    }
+    .panel p{color:var(--text-gray);margin-bottom:1.2rem}
+
+    .whatYouGet{
+      display:grid;gap:1rem;margin-top:1rem;
+    }
+    .mini{
+      background: rgba(10,14,39,.45);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding: 1.1rem;
+    }
+    .mini strong{display:block;margin-bottom:.25rem}
+    .mini span{color:var(--text-gray)}
+
+    /* Footer */
+    footer{
+      background: var(--dark-card);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-content{
+      display:grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand h3{
+      font-family:'DM Serif Display', serif;
+      font-size:2rem;
+      margin-bottom:1rem;
+      color: var(--teal);
+    }
+    .footer-brand p{color:var(--text-gray);line-height:1.7}
+    .footer-section h4{
+      font-size:1.1rem;margin-bottom:1.5rem;font-weight:600;color:var(--text-light);
+    }
+    .footer-section ul{list-style:none}
+    .footer-section li{margin-bottom:.8rem}
+    .footer-section a{color:var(--text-gray);text-decoration:none;transition:color .3s}
+    .footer-section a:hover{color:var(--teal)}
+    .footer-bottom{
+      border-top:1px solid rgba(0,217,201,.10);
+      padding-top:2rem;
+      text-align:center;
+      color:var(--text-gray);
+    }
+
+    @media (max-width: 1024px){
+      .hero-inner{grid-template-columns: 1fr;}
+      .grid{grid-template-columns: 1fr;}
+      .footer-content{grid-template-columns: repeat(2,1fr);}
+    }
+    @media (max-width: 768px){
+      .nav-links{display:none;}
+      .footer-content{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-content">
+      <a class="logo" href="index.html">FrontDesk Pro</a>
+      <div class="nav-links">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="book-demo.html">Book a Demo</a>
+        <a href="contact.html">Contact</a>
+        <a href="book-demo.html" class="cta-button">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <h1>Book a demo in <span>10 minutes</span></h1>
+          <p>
+            See a real call flow, how bookings work, and how leads get delivered to your team.
+            We'll recommend the best plan for your business — no pressure.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>What happens on the demo</h3>
+          <div class="muted">Quick, practical, and focused on your workflow.</div>
+          <ul class="bullets">
+            <li><span class="check">✓</span><div><strong>We run a live call</strong><div class="muted">So you hear it working</div></div></li>
+            <li><span class="check">✓</span><div><strong>We map your booking rules</strong><div class="muted">Providers, appointment types, after-hours</div></div></li>
+            <li><span class="check">✓</span><div><strong>You see notifications</strong><div class="muted">SMS/email summaries and next steps</div></div></li>
+            <li><span class="check">✓</span><div><strong>Next steps & onboarding</strong><div class="muted">How we go live safely</div></div></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="grid">
+
+        <section class="panel">
+          <h2>Choose a time</h2>
+          <p>Pick a slot that suits you. We'll confirm by email and send any prep details.</p>
+
+          <!-- Cal.com Embed -->
+          <div style="width:100%;min-height:620px;border-radius:16px;overflow:hidden;">
+            <iframe
+              src="https://cal.com/YOUR-USERNAME/30min"
+              style="width:100%;height:650px;border:0;border-radius:16px;"
+              title="Book a Demo with FrontDesk Pro"
+              frameborder="0"
+              loading="lazy"
+            ></iframe>
+          </div>
+          
+          <!-- 
+          ✅ INSTRUCTIONS: Replace "YOUR-USERNAME" above with your actual Cal.com username
+          Example: https://cal.com/johndoe/30min
+          
+          Alternative: Cal.com inline embed (for more customization)
+          1. Uncomment the code below
+          2. Replace YOUR-USERNAME
+          3. Comment out or remove the iframe above
+          
+          <div 
+            data-cal-link="YOUR-USERNAME/30min"
+            data-cal-config='{"layout":"month_view"}'
+            style="width:100%;min-height:620px;"
+          ></div>
+          <script type="text/javascript">
+            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init"); Cal("init", {origin:"https://cal.com"});
+          </script>
+          -->
+        </section>
+
+        <aside class="panel">
+          <h2>What to prepare</h2>
+          <p>You can still book a demo without this — but it helps us tailor it fast.</p>
+
+          <div class="whatYouGet">
+            <div class="mini">
+              <strong>Business type</strong>
+              <span>Dental, medical, trades, real estate, etc.</span>
+            </div>
+            <div class="mini">
+              <strong>What you want handled</strong>
+              <span>Bookings, FAQs, lead capture, after-hours, overflow calls.</span>
+            </div>
+            <div class="mini">
+              <strong>Providers (if applicable)</strong>
+              <span>Number of providers and typical appointment types.</span>
+            </div>
+            <div class="mini">
+              <strong>Notification preference</strong>
+              <span>SMS, email, or both.</span>
+            </div>
+            <div class="mini">
+              <strong>Current call problem</strong>
+              <span>Missed calls, admin overload, after-hours, low conversion.</span>
+            </div>
+          </div>
+
+          <div style="margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.10);">
+            <div class="muted">
+              Prefer to talk first?
+              <a href="contact.html" style="color:var(--teal);text-decoration:none;font-weight:600;">Contact us</a>
+              and we'll organise a time.
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>FrontDesk Pro</h3>
+          <p>AI receptionists that work 24/7 to capture leads, support bookings, and reduce missed calls.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="book-demo.html">Book a Demo</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pricing.html">Plans</a></li>
+            <li><a href="contact.html">Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FrontDesk Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

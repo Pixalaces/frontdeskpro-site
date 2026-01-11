@@ -1,0 +1,241 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Contact — FrontDesk Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#0066FF; --teal:#00D9C9;
+      --dark-bg:#0A0E27; --dark-card:#131829;
+      --text-light:#E8EDF5; --text-gray:#9CA3B8; --white:#FFF;
+      --border:rgba(0,217,201,.12); --shadow:0 22px 70px rgba(0,0,0,.35);
+      --radius:20px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Work Sans',sans-serif;background:var(--dark-bg);color:var(--text-light);line-height:1.6;overflow-x:hidden}
+    .container{max-width:1400px;margin:0 auto;padding:0 2rem}
+
+    nav{position:fixed;top:0;width:100%;background:rgba(10,14,39,.95);backdrop-filter:blur(10px);z-index:1000;padding:1.5rem 0;border-bottom:1px solid var(--border)}
+    .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 2rem}
+    .logo{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--teal);text-decoration:none}
+    .nav-links{display:flex;gap:2.5rem;align-items:center}
+    .nav-links a{color:var(--text-light);text-decoration:none;font-weight:500;transition:color .3s;font-size:.95rem}
+    .nav-links a:hover{color:var(--teal)}
+    .cta-button{background:linear-gradient(135deg,var(--primary),var(--teal));color:var(--white);padding:.75rem 1.75rem;border-radius:50px;text-decoration:none;font-weight:600;transition:all .3s;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,217,201,.35)}
+
+    .hero{margin-top:80px;padding:6rem 0 3rem;background:linear-gradient(135deg,var(--dark-bg) 0%,#0D1F3C 55%,#0A2E3E 100%);border-bottom:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-45%;right:-25%;width:820px;height:820px;background:radial-gradient(circle,rgba(0,217,201,.14) 0%,transparent 70%);animation:float 20s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(-50px,-30px) rotate(5deg)}}
+    .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;position:relative;z-index:1}
+    h1{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,4vw,4.2rem);line-height:1.1;margin-bottom:1rem;letter-spacing:-.5px}
+    h1 span{background:linear-gradient(135deg,var(--primary),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
+    .hero p{color:var(--text-gray);font-size:1.15rem;max-width:700px}
+
+    .card{background:var(--dark-card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.6rem}
+    .card h3{font-family:'DM Serif Display',serif;font-size:1.7rem;margin-bottom:.6rem}
+    .muted{color:var(--text-gray)}
+    .list{list-style:none;display:grid;gap:.75rem;margin-top:1rem}
+    .list li{display:flex;gap:.75rem;align-items:flex-start}
+    .icon{width:26px;height:26px;border-radius:8px;background:rgba(0,217,201,.12);border:1px solid rgba(0,217,201,.22);display:flex;align-items:center;justify-content:center;color:var(--teal);font-weight:800;flex:0 0 auto}
+
+    .section{padding:4.5rem 0}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+    .panel{background:var(--dark-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:1.6rem}
+    .panel h2{font-family:'DM Serif Display',serif;font-size:2.2rem;margin-bottom:.6rem}
+    .panel p{color:var(--text-gray);margin-bottom:1.2rem}
+
+    label{display:block;font-weight:600;margin:.75rem 0 .35rem}
+    input,select,textarea{
+      width:100%;
+      background:rgba(10,14,39,.45);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--text-light);
+      padding:.9rem 1rem;
+      border-radius:14px;
+      outline:none;
+      font-family:inherit;
+      font-size:1rem;
+    }
+    textarea{min-height:140px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:rgba(0,217,201,.40);box-shadow:0 0 0 3px rgba(0,217,201,.12)}
+
+    .btn{
+      margin-top:1rem;
+      width:100%;
+      border:0;
+      border-radius:999px;
+      padding:1rem 1.6rem;
+      font-weight:700;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--primary),var(--teal));
+      color:var(--white);
+      transition:all .3s;
+      font-size:1rem;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(0,217,201,.35)}
+    .small{font-size:.95rem;color:var(--text-gray);margin-top:.75rem}
+
+    .pillRow{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+    .pill{display:inline-block;padding:.5rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:var(--text-gray);font-size:.9rem}
+
+    footer{background:var(--dark-card);color:var(--white);padding:4rem 0 2rem;border-top:1px solid var(--border)}
+    .footer-content{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3rem}
+    .footer-brand h3{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:1rem;color:var(--teal)}
+    .footer-brand p{color:var(--text-gray);line-height:1.7}
+    .footer-section h4{font-size:1.1rem;margin-bottom:1.5rem;font-weight:600;color:var(--text-light)}
+    .footer-section ul{list-style:none}
+    .footer-section li{margin-bottom:.8rem}
+    .footer-section a{color:var(--text-gray);text-decoration:none;transition:color .3s}
+    .footer-section a:hover{color:var(--teal)}
+    .footer-bottom{border-top:1px solid rgba(0,217,201,.10);padding-top:2rem;text-align:center;color:var(--text-gray)}
+
+    @media (max-width:1024px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.footer-content{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:768px){.nav-links{display:none}.footer-content{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <a class="logo" href="index.html">FrontDesk Pro</a>
+      <div class="nav-links">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="book-demo.html">Book a Demo</a>
+        <a href="contact.html">Contact</a>
+        <a href="book-demo.html" class="cta-button">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <h1>Contact <span>FrontDesk Pro</span></h1>
+          <p>Tell us what you need. We'll recommend the right plan and the fastest path to go-live.</p>
+          <div class="pillRow">
+            <span class="pill">Sales & demos</span>
+            <span class="pill">Setup & onboarding</span>
+            <span class="pill">Support questions</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Quick options</h3>
+          <p class="muted">Prefer not to fill out a form? Use one of these.</p>
+          <ul class="list">
+            <li><span class="icon">✓</span><div><strong>Book a demo</strong><div class="muted"><a href="book-demo.html" style="color:var(--teal);text-decoration:none;font-weight:600;">Choose a time here</a></div></div></li>
+            <li><span class="icon">✓</span><div><strong>Email</strong><div class="muted">support@frontdeskpro.com.au</div></div></li>
+            <li><span class="icon">✓</span><div><strong>Response time</strong><div class="muted">Typically within 1 business day</div></div></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="grid">
+
+        <section class="panel">
+          <h2>Send a message</h2>
+          <p>We'll reply with next steps and any questions needed to configure your AI receptionist.</p>
+
+          <!-- NOTE: This is static HTML. Wire it to your backend/form tool later. -->
+          <form action="#" method="post">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+
+            <label for="business">Business name</label>
+            <input id="business" name="business" type="text" placeholder="Clinic / business name" required>
+
+            <label for="industry">Industry</label>
+            <select id="industry" name="industry" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Dental</option>
+              <option>Medical</option>
+              <option>Allied Health</option>
+              <option>Trades</option>
+              <option>Real Estate</option>
+              <option>Other</option>
+            </select>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required>
+
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="04xx xxx xxx" required>
+
+            <label for="message">What do you want the AI receptionist to handle?</label>
+            <textarea id="message" name="message" placeholder="Bookings, FAQs, after-hours, missed calls, lead capture..." required></textarea>
+
+            <button class="btn" type="submit">Send Message</button>
+            <div class="small">By submitting, you agree we may contact you about your enquiry.</div>
+          </form>
+        </section>
+
+        <aside class="panel">
+          <h2>What we'll ask on first contact</h2>
+          <p>To set this up properly, we'll confirm a few basics.</p>
+
+          <ul class="list">
+            <li><span class="icon">✓</span><div><strong>Your main goal</strong><div class="muted">Bookings, lead capture, after-hours coverage, overflow</div></div></li>
+            <li><span class="icon">✓</span><div><strong>Provider count</strong><div class="muted">How many providers and appointment types (if applicable)</div></div></li>
+            <li><span class="icon">✓</span><div><strong>Notification preference</strong><div class="muted">SMS, email, or both</div></div></li>
+            <li><span class="icon">✓</span><div><strong>Call routing</strong><div class="muted">Missed-call forwarding or after-hours forwarding</div></div></li>
+          </ul>
+
+          <div style="margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.10)">
+            <p class="muted" style="margin-bottom:.6rem;"><strong>Already ready?</strong></p>
+            <a class="cta-button" href="book-demo.html" style="width:100%;justify-content:center">Book a Demo</a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>FrontDesk Pro</h3>
+          <p>AI receptionists that work 24/7 to capture leads, support bookings, and reduce missed calls.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="book-demo.html">Book a Demo</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pricing.html">Plans</a></li>
+            <li><a href="contact.html">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 FrontDesk Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

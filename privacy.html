@@ -1,0 +1,194 @@
+<!-- privacy.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Privacy Policy — FrontDesk Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#0066FF; --teal:#00D9C9;
+      --dark-bg:#0A0E27; --dark-card:#131829;
+      --text-light:#E8EDF5; --text-gray:#9CA3B8; --white:#FFF;
+      --border:rgba(0,217,201,.12); --radius:20px; --shadow:0 22px 70px rgba(0,0,0,.35);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Work Sans',sans-serif;background:var(--dark-bg);color:var(--text-light);line-height:1.7;overflow-x:hidden}
+    .container{max-width:1100px;margin:0 auto;padding:0 2rem}
+
+    nav{position:fixed;top:0;width:100%;background:rgba(10,14,39,.95);backdrop-filter:blur(10px);z-index:1000;padding:1.5rem 0;border-bottom:1px solid var(--border)}
+    .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 2rem}
+    .logo{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--teal);text-decoration:none}
+    .nav-links{display:flex;gap:2.5rem;align-items:center}
+    .nav-links a{color:var(--text-light);text-decoration:none;font-weight:500;transition:color .3s;font-size:.95rem}
+    .nav-links a:hover{color:var(--teal)}
+    .cta-button{background:linear-gradient(135deg,var(--primary),var(--teal));color:var(--white);padding:.75rem 1.75rem;border-radius:50px;text-decoration:none;font-weight:600;transition:all .3s;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,217,201,.35)}
+
+    header{
+      margin-top:80px;
+      padding:5.5rem 0 2.5rem;
+      background:linear-gradient(135deg,var(--dark-bg) 0%,#0D1F3C 55%,#0A2E3E 100%);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    h1{
+      font-family:'DM Serif Display',serif;
+      font-size:clamp(2.2rem,4vw,3.6rem);
+      line-height:1.1;margin-bottom:1rem;letter-spacing:-.5px
+    }
+    h1 span{
+      background:linear-gradient(135deg,var(--primary),var(--teal));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      font-style:italic
+    }
+    .sub{color:var(--text-gray);max-width:900px}
+    .content{
+      padding:3rem 0 5rem;
+    }
+    .paper{
+      background:var(--dark-card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:2rem;
+    }
+    h2{
+      font-family:'DM Serif Display',serif;
+      font-size:1.8rem;
+      margin: 1.6rem 0 .6rem;
+    }
+    p{color:var(--text-light);margin:.6rem 0}
+    ul{margin:.6rem 0 .6rem 1.2rem;color:var(--text-light)}
+    li{margin:.35rem 0}
+    .muted{color:var(--text-gray)}
+    .notice{
+      border-left: 3px solid rgba(0,217,201,.35);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: var(--text-gray);
+    }
+
+    footer{background:var(--dark-card);color:var(--white);padding:2.5rem 0;border-top:1px solid var(--border)}
+    .footerBottom{text-align:center;color:var(--text-gray)}
+    @media (max-width:768px){.nav-links{display:none}.paper{padding:1.4rem}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <a class="logo" href="index.html">FrontDesk Pro</a>
+      <div class="nav-links">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="book-demo.html">Book a Demo</a>
+        <a href="contact.html">Contact</a>
+        <a href="book-demo.html" class="cta-button">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <h1>Privacy <span>Policy</span></h1>
+      <p class="sub">
+        This Privacy Policy explains how FrontDesk Pro collects, uses, stores, and discloses information when providing AI receptionist services.
+      </p>
+      <p class="muted" style="margin-top:.7rem;">Last updated: <strong>01 Jan 2026</strong></p>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="container">
+      <div class="paper">
+
+        <h2>1. Who we are</h2>
+        <p>
+          "FrontDesk Pro", "we", "us" and "our" refers to the provider of the FrontDesk Pro AI receptionist service.
+          If you are a customer clinic/business ("Client"), you control how the service is configured for your business.
+        </p>
+
+        <h2>2. What information we collect</h2>
+        <p>Depending on configuration, we may collect and process:</p>
+        <ul>
+          <li><strong>Caller information:</strong> name, phone number, and call content.</li>
+          <li><strong>Call metadata:</strong> date/time, duration, call outcome, and routing information.</li>
+          <li><strong>Booking details:</strong> appointment type, preferred times, and other booking-related information provided by the caller.</li>
+          <li><strong>Client information:</strong> business contact details, configuration settings, and support communications.</li>
+          <li><strong>SMS/email delivery records:</strong> message content and delivery status.</li>
+        </ul>
+
+        <div class="notice">
+          <strong>Important:</strong> FrontDesk Pro is designed to support reception workflows, not to provide medical advice.
+          Clients should avoid configuring the service to collect sensitive health information unless necessary.
+        </div>
+
+        <h2>3. Call recordings and transcripts</h2>
+        <p>
+          Calls may be recorded and/or transcribed to provide the service, generate summaries, improve call handling, and for quality assurance.
+          Recording behaviour may vary depending on your configuration and telephony provider.
+        </p>
+
+        <h2>4. How we use information</h2>
+        <p>We use information to:</p>
+        <ul>
+          <li>Answer calls, capture leads, and (where enabled) book appointments.</li>
+          <li>Send notifications to Clients via SMS and/or email.</li>
+          <li>Provide support, onboarding, and service improvements.</li>
+          <li>Detect and prevent fraud, abuse, or security issues.</li>
+          <li>Comply with legal and regulatory obligations.</li>
+        </ul>
+
+        <h2>5. Disclosure to third parties</h2>
+        <p>
+          To deliver the service, we may use third-party providers (e.g., telephony, AI, messaging, hosting, analytics).
+          These providers may process information on our behalf under contractual obligations.
+        </p>
+        <p>Examples may include:</p>
+        <ul>
+          <li>Telephony providers for call routing and numbers.</li>
+          <li>SMS/email providers for notifications.</li>
+          <li>AI providers for voice and language processing.</li>
+          <li>Hosting providers for infrastructure.</li>
+        </ul>
+
+        <h2>6. Data storage and security</h2>
+        <p>
+          We take reasonable steps to protect information from misuse, interference, loss, unauthorised access, modification, or disclosure.
+          No system is perfectly secure, and you acknowledge risks inherent to internet-based services.
+        </p>
+
+        <h2>7. Data retention</h2>
+        <p>
+          We retain information only as long as reasonably required for service delivery, support, compliance, and dispute resolution.
+          Retention periods may vary depending on configuration and legal requirements.
+        </p>
+
+        <h2>8. Your choices</h2>
+        <p>Clients can request changes to configuration (e.g., notifications, call recording settings where available).</p>
+        <p>Individuals may request access to or correction of personal information, subject to legal limits.</p>
+
+        <h2>9. International data transfers</h2>
+        <p>
+          Some third-party providers may store or process data outside Australia. Where this occurs, we take reasonable steps
+          to ensure appropriate protections are in place.
+        </p>
+
+        <h2>10. Contact</h2>
+        <p>If you have questions or requests about this policy, contact us:</p>
+        <p class="muted"><strong>Email:</strong> support@frontdeskpro.com.au</p>
+
+        <p class="muted" style="margin-top:1.2rem;">
+          This policy is general information and does not constitute legal advice. Consider obtaining legal advice to tailor this policy to your exact setup.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footerBottom">&copy; 2026 FrontDesk Pro. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>

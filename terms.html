@@ -1,0 +1,212 @@
+<!-- terms.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Terms of Service — FrontDesk Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#0066FF; --teal:#00D9C9;
+      --dark-bg:#0A0E27; --dark-card:#131829;
+      --text-light:#E8EDF5; --text-gray:#9CA3B8; --white:#FFF;
+      --border:rgba(0,217,201,.12); --radius:20px; --shadow:0 22px 70px rgba(0,0,0,.35);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Work Sans',sans-serif;background:var(--dark-bg);color:var(--text-light);line-height:1.7;overflow-x:hidden}
+    .container{max-width:1100px;margin:0 auto;padding:0 2rem}
+
+    nav{position:fixed;top:0;width:100%;background:rgba(10,14,39,.95);backdrop-filter:blur(10px);z-index:1000;padding:1.5rem 0;border-bottom:1px solid var(--border)}
+    .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 2rem}
+    .logo{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--teal);text-decoration:none}
+    .nav-links{display:flex;gap:2.5rem;align-items:center}
+    .nav-links a{color:var(--text-light);text-decoration:none;font-weight:500;transition:color .3s;font-size:.95rem}
+    .nav-links a:hover{color:var(--teal)}
+    .cta-button{background:linear-gradient(135deg,var(--primary),var(--teal));color:var(--white);padding:.75rem 1.75rem;border-radius:50px;text-decoration:none;font-weight:600;transition:all .3s;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,217,201,.35)}
+
+    header{
+      margin-top:80px;
+      padding:5.5rem 0 2.5rem;
+      background:linear-gradient(135deg,var(--dark-bg) 0%,#0D1F3C 55%,#0A2E3E 100%);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    h1{
+      font-family:'DM Serif Display',serif;
+      font-size:clamp(2.2rem,4vw,3.6rem);
+      line-height:1.1;margin-bottom:1rem;letter-spacing:-.5px
+    }
+    h1 span{
+      background:linear-gradient(135deg,var(--primary),var(--teal));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      font-style:italic
+    }
+    .sub{color:var(--text-gray);max-width:900px}
+    .content{padding:3rem 0 5rem}
+    .paper{
+      background:var(--dark-card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:2rem;
+    }
+    h2{font-family:'DM Serif Display',serif;font-size:1.8rem;margin:1.6rem 0 .6rem}
+    p{margin:.6rem 0}
+    ul{margin:.6rem 0 .6rem 1.2rem}
+    li{margin:.35rem 0}
+    .muted{color:var(--text-gray)}
+    .notice{
+      border-left: 3px solid rgba(0,217,201,.35);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: var(--text-gray);
+    }
+
+    footer{background:var(--dark-card);color:var(--white);padding:2.5rem 0;border-top:1px solid var(--border)}
+    .footerBottom{text-align:center;color:var(--text-gray)}
+    @media (max-width:768px){.nav-links{display:none}.paper{padding:1.4rem}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <a class="logo" href="index.html">FrontDesk Pro</a>
+      <div class="nav-links">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="book-demo.html">Book a Demo</a>
+        <a href="contact.html">Contact</a>
+        <a href="book-demo.html" class="cta-button">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <h1>Terms of <span>Service</span></h1>
+      <p class="sub">
+        These Terms govern your use of FrontDesk Pro's AI receptionist services. By purchasing or using the service, you agree to these Terms.
+      </p>
+      <p class="muted" style="margin-top:.7rem;">Last updated: <strong>01 Jan 2026</strong></p>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="container">
+      <div class="paper">
+
+        <h2>1. Definitions</h2>
+        <p><strong>Client</strong> means the business or person purchasing the service.</p>
+        <p><strong>Service</strong> means the AI receptionist, call handling, booking workflows, notifications, and related features.</p>
+        <p><strong>Caller</strong> means an end user who calls the Client.</p>
+
+        <h2>2. Service description</h2>
+        <p>
+          FrontDesk Pro provides an AI receptionist that can answer calls, capture information, send notifications, and (where enabled) assist with appointment booking.
+          The Service is configured based on Client-provided information and rules.
+        </p>
+
+        <div class="notice">
+          <strong>No medical advice:</strong> The Service is not a medical device and does not provide medical advice, diagnosis, or treatment.
+          Clients remain responsible for all clinical decisions and patient communications.
+        </div>
+
+        <h2>3. Client responsibilities</h2>
+        <p>The Client agrees to:</p>
+        <ul>
+          <li>Provide accurate business information, appointment types, and call handling rules.</li>
+          <li>Ensure the Service configuration complies with applicable laws and industry obligations.</li>
+          <li>Use the Service for legitimate business purposes only.</li>
+          <li>Review notifications and follow up on leads/bookings where required.</li>
+        </ul>
+
+        <h2>4. Onboarding & configuration</h2>
+        <p>
+          A one-time onboarding/configuration fee may apply. Onboarding includes setting up call flows, rules, and integrations (where available).
+          The Client must provide requested information in a timely manner to avoid delays.
+        </p>
+
+        <h2>5. Usage, limits, and overage</h2>
+        <p>
+          Plans include a monthly allowance of AI-handled call minutes. If usage exceeds the included allowance, calls continue uninterrupted
+          and additional minutes are billed at the overage rate shown on the pricing page or agreed in writing.
+        </p>
+        <p>
+          SMS notifications are included under fair use for service-related messages only (e.g., booking confirmations, lead notifications, and system alerts).
+          Bulk or marketing SMS is not included and may be restricted or billed separately.
+        </p>
+
+        <h2>6. Fees and payment</h2>
+        <p>
+          Subscription fees are billed monthly in advance unless otherwise agreed. Additional usage charges (e.g., overage minutes) may be billed in arrears.
+          If payment fails, we may suspend or limit the Service until payment is resolved.
+        </p>
+
+        <h2>7. Cancellations and refunds</h2>
+        <p>
+          There are no lock-in contracts unless otherwise agreed. You may cancel your subscription at any time.
+          Fees already paid are generally non-refundable except where required by law.
+        </p>
+
+        <h2>8. Availability and limitations</h2>
+        <p>
+          While we aim for high availability, the Service relies on third-party networks and providers. Outages, delays, or errors may occur.
+          We do not guarantee that every call will be answered perfectly or that all bookings/leads will be error-free.
+        </p>
+
+        <h2>9. Data and privacy</h2>
+        <p>
+          Use of the Service is subject to our Privacy Policy. Calls may be recorded and/or transcribed depending on configuration.
+          The Client is responsible for ensuring appropriate caller notices and consent where required by law.
+        </p>
+
+        <h2>10. Intellectual property</h2>
+        <p>
+          We retain all rights in the Service, software, and underlying systems. The Client retains rights in their own business materials and content.
+        </p>
+
+        <h2>11. Prohibited use</h2>
+        <p>You must not use the Service to:</p>
+        <ul>
+          <li>Collect or use information unlawfully.</li>
+          <li>Send spam or marketing SMS via the Service.</li>
+          <li>Misrepresent the Service as a human if required disclosures apply (where relevant).</li>
+          <li>Attempt to interfere with or reverse engineer the Service.</li>
+        </ul>
+
+        <h2>12. Liability</h2>
+        <p>
+          To the extent permitted by law, we exclude all warranties and are not liable for indirect, consequential, or special loss
+          (including lost profits, lost revenue, or loss of goodwill). Our total liability is limited to the fees paid by the Client
+          for the Service in the 3 months before the event giving rise to the claim.
+        </p>
+
+        <h2>13. Termination</h2>
+        <p>
+          We may suspend or terminate access if you breach these Terms, misuse the Service, or fail to pay fees when due.
+        </p>
+
+        <h2>14. Changes</h2>
+        <p>
+          We may update these Terms from time to time. Continued use after updates constitutes acceptance of the updated Terms.
+        </p>
+
+        <h2>15. Contact</h2>
+        <p class="muted"><strong>Email:</strong> support@frontdeskpro.com.au</p>
+
+        <p class="muted" style="margin-top:1.2rem;">
+          These Terms are general and do not constitute legal advice. Consider obtaining legal advice to tailor them to your exact operating model and jurisdiction.
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footerBottom">&copy; 2026 FrontDesk Pro. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>

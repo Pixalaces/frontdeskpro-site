@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Pricing — FrontDesk Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:#0066FF;
+      --primary-dark:#0052CC;
+      --teal:#00D9C9;
+      --teal-dark:#00B8AA;
+      --dark-bg:#0A0E27;
+      --dark-card:#131829;
+      --text-light:#E8EDF5;
+      --text-gray:#9CA3B8;
+      --white:#FFFFFF;
+      --border: rgba(0,217,201,.12);
+      --shadow: 0 22px 70px rgba(0,0,0,.35);
+      --radius: 20px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body{
+      font-family:'Work Sans', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-light);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    .container{ max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+    /* Nav */
+    nav{
+      position: fixed;
+      top:0; width:100%;
+      background: rgba(10,14,39,.95);
+      backdrop-filter: blur(10px);
+      z-index:1000;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      max-width: 1400px;
+      margin:0 auto;
+      padding:0 2rem;
+    }
+    .logo{
+      font-family:'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--teal);
+      font-weight:400;
+      text-decoration:none;
+    }
+    .nav-links{
+      display:flex;
+      gap:2.5rem;
+      align-items:center;
+    }
+    .nav-links a{
+      color: var(--text-light);
+      text-decoration:none;
+      font-weight:500;
+      transition: color .3s;
+      font-size: .95rem;
+    }
+    .nav-links a:hover{ color: var(--teal); }
+    .cta-button{
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      color: var(--white);
+      padding: .75rem 1.75rem;
+      border-radius: 50px;
+      text-decoration:none;
+      font-weight:600;
+      transition: all .3s;
+      font-size: .95rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .cta-button:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,217,201,.35);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 80px;
+      padding: 6rem 0 4rem;
+      position:relative;
+      overflow:hidden;
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #0D1F3C 50%, #0A2E3E 100%);
+    }
+    .hero::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      right:-20%;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(0,217,201,.15) 0%, transparent 70%);
+      animation: float 20s ease-in-out infinite;
+    }
+    .hero::after{
+      content:'';
+      position:absolute;
+      bottom:-30%;
+      left:-10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,102,255,.1) 0%, transparent 70%);
+      animation: float 25s ease-in-out infinite reverse;
+    }
+    @keyframes float{
+      0%,100%{ transform: translate(0,0) rotate(0deg); }
+      50%{ transform: translate(-50px,-30px) rotate(5deg); }
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:1;
+      text-align:center;
+    }
+    h1{
+      font-family:'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 4vw, 4.4rem);
+      line-height:1.1;
+      margin-bottom: 1.2rem;
+      letter-spacing: -.5px;
+    }
+    h1 span{
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color: transparent;
+      background-clip:text;
+      font-style: italic;
+    }
+    .hero p{
+      font-size: 1.2rem;
+      color: var(--text-gray);
+      max-width: 760px;
+      margin: 0 auto 1.5rem;
+    }
+    .trust{
+      display:flex;
+      gap:1rem;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:1.5rem;
+    }
+    .pill{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      padding:.6rem 1rem;
+      border-radius: 999px;
+      font-size: .9rem;
+      color: var(--text-gray);
+    }
+
+    /* Pricing Cards */
+    .section{ padding: 5rem 0; }
+    .pricing-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .pricing-card{
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 580px;
+    }
+    .pricing-card::before{
+      content:'';
+      position:absolute;
+      top:0; left:0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--teal));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .pricing-card:hover::before{ transform: scaleX(1); }
+    .pricing-card:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,217,201,.2);
+      border-color: var(--teal);
+    }
+
+    .plan-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom: 1.2rem;
+    }
+    .plan-name{
+      font-size: .9rem;
+      letter-spacing:.15em;
+      font-weight: 800;
+      color: var(--text-gray);
+      text-transform: uppercase;
+    }
+    .plan-for{
+      margin-top:.5rem;
+      font-size: .95rem;
+      color: var(--text-gray);
+    }
+    .badge{
+      font-size: .85rem;
+      padding:.4rem .8rem;
+      border-radius: 999px;
+      border:1px solid rgba(0,217,201,.25);
+      background: rgba(0,217,201,.08);
+      color: var(--teal);
+      white-space:nowrap;
+    }
+    .badge.popular{
+      border-color: rgba(74,163,255,.35);
+      background: rgba(74,163,255,.08);
+      color: #4aa3ff;
+    }
+
+    .price{
+      margin: 1.2rem 0 0;
+      font-weight: 900;
+      font-size: 3.5rem;
+      letter-spacing:-.8px;
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color: transparent;
+      background-clip:text;
+    }
+    .per{
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      font-weight: 600;
+    }
+    .setup{
+      margin-top:.6rem;
+      font-size: .95rem;
+      color: var(--text-gray);
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 1.5rem 0;
+    }
+
+    .features-list{
+      list-style:none;
+      flex:1;
+    }
+    .features-list li{
+      padding: .6rem 0;
+      color: var(--text-light);
+      font-size: .98rem;
+      position:relative;
+      padding-left: 1.5rem;
+    }
+    .features-list li::before{
+      content: '✓';
+      position:absolute;
+      left:0;
+      color: var(--teal);
+      font-weight: bold;
+    }
+    .highlight{
+      font-weight: 700;
+      color: var(--text-light);
+    }
+
+    .btn-wrapper{
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+    }
+    .primary-btn{
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight: 700;
+      transition: all .3s;
+      display:block;
+      text-align:center;
+      border:none;
+      cursor:pointer;
+    }
+    .primary-btn:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,217,201,.35);
+    }
+    .secondary-btn{
+      background: rgba(255,255,255,.08);
+      color: var(--text-light);
+      border: 1px solid rgba(255,255,255,.16);
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight: 700;
+      transition: all .3s;
+      display:block;
+      text-align:center;
+      cursor:pointer;
+    }
+    .secondary-btn:hover{
+      background: rgba(255,255,255,.12);
+      transform: translateY(-3px);
+    }
+    .footnote{
+      margin-top:.8rem;
+      font-size: .88rem;
+      color: var(--text-gray);
+      text-align:center;
+    }
+
+    /* Info Sections */
+    .info-section{
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    .info-section h2{
+      font-family:'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .info-section p{
+      color: var(--text-gray);
+      margin-bottom: 1.2rem;
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .info-box{
+      background: rgba(10,14,39,.45);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+    .info-box h3{
+      font-size: 1rem;
+      letter-spacing:.08em;
+      margin-bottom: 1rem;
+      color: var(--text-gray);
+      text-transform: uppercase;
+    }
+    .info-box ul{
+      list-style:none;
+    }
+    .info-box li{
+      padding: .4rem 0;
+      color: var(--text-light);
+      position:relative;
+      padding-left: 1.2rem;
+    }
+    .info-box li::before{
+      content: '→';
+      position:absolute;
+      left:0;
+      color: var(--teal);
+    }
+
+    /* FAQ */
+    .faq{
+      margin-top: 3rem;
+    }
+    details{
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding: 1.2rem 0;
+    }
+    details:first-child{ border-top:0; }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .answer{
+      margin-top:.8rem;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* Bottom CTA */
+    .bottom-cta{
+      text-align:center;
+      padding: 3rem 0;
+      margin-top: 3rem;
+    }
+    .bottom-cta h2{
+      font-family:'DM Serif Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .bottom-cta p{
+      color: var(--text-gray);
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-row{
+      display:flex;
+      gap:1rem;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn-row a{
+      min-width: 200px;
+    }
+
+    /* Footer */
+    footer{
+      background: var(--dark-card);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-content{
+      display:grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand h3{
+      font-family:'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--teal);
+    }
+    .footer-brand p{ color: var(--text-gray); line-height: 1.7; }
+    .footer-section h4{
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+    .footer-section ul{ list-style:none; }
+    .footer-section li{ margin-bottom: .8rem; }
+    .footer-section a{
+      color: var(--text-gray);
+      text-decoration:none;
+      transition: color .3s;
+    }
+    .footer-section a:hover{ color: var(--teal); }
+    .footer-bottom{
+      border-top: 1px solid rgba(0,217,201,.10);
+      padding-top: 2rem;
+      text-align:center;
+      color: var(--text-gray);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .pricing-grid{ grid-template-columns: 1fr; }
+      .pricing-card{ min-height: auto; }
+      .two-col{ grid-template-columns: 1fr; }
+      .footer-content{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px){
+      .nav-links{ display:none; }
+      h1{ font-size: 2.5rem; }
+      .footer-content{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-content">
+      <a class="logo" href="index.html">FrontDesk Pro</a>
+      <div class="nav-links">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="book-demo.html">Book a Demo</a>
+        <a href="contact.html">Contact</a>
+        <a href="book-demo.html" class="cta-button">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>AI Receptionist <span>Pricing</span></h1>
+        <p>
+          24/7 call handling, appointment booking, and lead capture — tailored to your business.
+          Never miss a call. Never miss a booking.
+        </p>
+        <div class="trust">
+          <span class="pill">No lock-in contracts</span>
+          <span class="pill">Local support</span>
+          <span class="pill">Built for Australian businesses</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="pricing-grid">
+
+        <!-- STARTER -->
+        <article class="pricing-card">
+          <div class="plan-header">
+            <div>
+              <div class="plan-name">STARTER</div>
+              <div class="plan-for">Best for small businesses & trades</div>
+            </div>
+            <div class="badge">Simple & reliable</div>
+          </div>
+
+          <div class="price">$399 <span class="per">/ month</span></div>
+          <div class="setup">+ $900 one-time onboarding</div>
+
+          <div class="divider"></div>
+
+          <ul class="features-list">
+            <li><span class="highlight">24/7 AI receptionist</span></li>
+            <li>Call answering & lead capture</li>
+            <li>Basic appointment booking</li>
+            <li>SMS & email notifications <span style="color:var(--text-gray)">(fair use)</span></li>
+            <li><span class="highlight">500 AI call minutes</span> per month</li>
+            <li>Soft cap → <span class="highlight">$0.10/min</span> overage</li>
+          </ul>
+
+          <div class="btn-wrapper">
+            <a class="primary-btn" href="book-demo.html">Get Started</a>
+            <div class="footnote">Ideal for solo providers and small teams</div>
+          </div>
+        </article>
+
+        <!-- PRO -->
+        <article class="pricing-card">
+          <div class="plan-header">
+            <div>
+              <div class="plan-name">PRO</div>
+              <div class="plan-for">Built for busy practices</div>
+            </div>
+            <div class="badge popular">⭐ Most Popular</div>
+          </div>
+
+          <div class="price">$699 <span class="per">/ month</span></div>
+          <div class="setup">+ $900 one-time onboarding</div>
+
+          <div class="divider"></div>
+
+          <ul class="features-list">
+            <li><span class="highlight">Everything in Starter</span>, plus:</li>
+            <li>Multi-provider scheduling</li>
+            <li>Multiple appointment types</li>
+            <li>Intelligent call routing</li>
+            <li>Calendar integration</li>
+            <li>Priority support</li>
+            <li><span class="highlight">1,500 AI call minutes</span> per month</li>
+            <li>Soft cap → <span class="highlight">$0.09/min</span> overage</li>
+          </ul>
+
+          <div class="btn-wrapper">
+            <a class="primary-btn" href="book-demo.html">Book a Demo</a>
+            <div class="footnote">Designed for practices with up to 8 providers</div>
+          </div>
+        </article>
+
+        <!-- PREMIUM -->
+        <article class="pricing-card">
+          <div class="plan-header">
+            <div>
+              <div class="plan-name">PREMIUM</div>
+              <div class="plan-for">For large centres & groups</div>
+            </div>
+            <div class="badge">Custom build</div>
+          </div>
+
+          <div class="price">Custom <span class="per">pricing</span></div>
+          <div class="setup">Onboarding & configuration tailored to your needs</div>
+
+          <div class="divider"></div>
+
+          <ul class="features-list">
+            <li>Custom call flows</li>
+            <li>Advanced routing logic</li>
+            <li>Multiple locations & numbers</li>
+            <li>Custom minute pool</li>
+            <li>Dedicated onboarding</li>
+            <li>SLA support</li>
+          </ul>
+
+          <div class="btn-wrapper">
+            <a class="secondary-btn" href="contact.html">Contact Sales</a>
+            <div class="footnote">Best for large or multi-location practices</div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Included in all plans -->
+      <div class="info-section">
+        <h2>What's included with every plan</h2>
+        <div class="two-col">
+          <div class="info-box">
+            <h3>Core Service</h3>
+            <ul>
+              <li>24/7 call answering (after-hours & overflow)</li>
+              <li>AI trained on your rules and preferences</li>
+              <li>Real-time SMS & email alerts</li>
+              <li>Call summaries & lead details</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h3>Commercial</h3>
+            <ul>
+              <li>No lock-in contracts</li>
+              <li>Upgrade anytime as you grow</li>
+              <li>Local support</li>
+              <li>Transparent usage with soft caps</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Onboarding -->
+      <div class="info-section">
+        <h2>One-Time Onboarding & Configuration</h2>
+        <p>
+          We don't just turn the system on — we configure it specifically for your business to ensure accurate bookings
+          and a smooth customer experience from day one.
+        </p>
+        <div class="two-col">
+          <div class="info-box">
+            <h3>Onboarding Includes</h3>
+            <ul>
+              <li>Custom call scripts (greeting, after-hours, transfers)</li>
+              <li>Providers and appointment types setup</li>
+              <li>Booking rules, exclusions, and edge cases</li>
+              <li>Number configuration and call routing</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h3>Go-Live Testing</h3>
+            <ul>
+              <li>Test calls across key scenarios</li>
+              <li>Confirm notifications (SMS/email)</li>
+              <li>Confirm booking logic</li>
+              <li>Launch-ready handover</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Usage -->
+      <div class="info-section">
+        <h2>Usage & Fair Use</h2>
+        <p>
+          Each plan includes a monthly allowance of AI-handled call minutes. If you exceed your included minutes,
+          calls continue uninterrupted at the listed overage rate.
+        </p>
+        <p>
+          SMS notifications are included under fair use for service-related messages only (e.g. booking confirmations,
+          lead notifications, and system alerts). Bulk or marketing SMS is not included.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div class="info-section faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details>
+          <summary>Will calls ever stop if I hit my limit?</summary>
+          <div class="answer">No. Calls continue uninterrupted. Overage is billed per minute at your plan rate.</div>
+        </details>
+
+        <details>
+          <summary>Can this book appointments automatically?</summary>
+          <div class="answer">Yes. The AI follows your booking rules and appointment types (and can route to the right provider where applicable).</div>
+        </details>
+
+        <details>
+          <summary>Is there a contract?</summary>
+          <div class="answer">No lock-in contracts. Cancel anytime.</div>
+        </details>
+
+        <details>
+          <summary>Can I upgrade later?</summary>
+          <div class="answer">Yes. Many businesses start on Starter and upgrade as call volume increases.</div>
+        </details>
+
+        <details>
+          <summary>Does this replace my staff?</summary>
+          <div class="answer">No. It handles calls so your team can focus on customers and in-person work.</div>
+        </details>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="bottom-cta">
+        <h2>Not sure which plan is right?</h2>
+        <p>Book a demo and we'll recommend the best option for your business.</p>
+
+        <div class="btn-row">
+          <a class="primary-btn" href="book-demo.html">Book a Demo</a>
+          <a class="secondary-btn" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>FrontDesk Pro</h3>
+          <p>AI receptionists that work 24/7 to capture leads, support bookings, and reduce missed calls.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="book-demo.html">Book a Demo</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pricing.html">Plans</a></li>
+            <li><a href="contact.html">Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FrontDesk Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

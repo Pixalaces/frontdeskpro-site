@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontDesk Pro - AI Receptionists for Your Business</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --teal: #00D9C9;
+            --teal-dark: #00B8AA;
+            --dark-bg: #0A0E27;
+            --dark-card: #131829;
+            --gradient-start: #0066FF;
+            --gradient-end: #00D9C9;
+            --text-light: #E8EDF5;
+            --text-gray: #9CA3B8;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 217, 201, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--teal);
+            font-weight: 400;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover { color: var(--teal); }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            color: var(--white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 201, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #0D1F3C 50%, #0A2E3E 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 217, 201, 0.15) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, transparent 70%);
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, -30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            color: var(--white);
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+            border: none;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 217, 201, 0.4);
+        }
+
+        .secondary-btn {
+            color: var(--teal);
+            padding: 1.1rem 2.5rem;
+            border: 2px solid var(--teal);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .secondary-btn:hover {
+            background: var(--teal);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            background: var(--dark-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 217, 201, 0.1);
+            animation: fadeInRight 0.8s ease-out 0.6s backwards;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .stat { text-align: center; }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label { color: var(--text-gray); font-size: 0.9rem; font-weight: 500; }
+
+        /* Industries Section */
+        .industries { padding: 6rem 0; background: var(--dark-bg); }
+
+        .section-header { text-align: center; margin-bottom: 5rem; }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--teal);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .industry-card {
+            background: var(--dark-card);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 217, 201, 0.1);
+        }
+
+        .industry-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--teal));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .industry-card:hover::before { transform: scaleX(1); }
+
+        .industry-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 217, 201, 0.2);
+            border-color: var(--teal);
+        }
+
+        .industry-icon { font-size: 3rem; margin-bottom: 1.5rem; display: block; }
+
+        .industry-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .industry-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .industry-features { list-style: none; }
+        .industry-features li {
+            color: var(--text-light);
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .industry-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #0A0E27 0%, #0D1935 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 217, 201, 0.15) 0%, transparent 70%);
+        }
+
+        .features .section-tag { color: var(--teal); }
+        .features .section-title { color: var(--white); }
+        .features .section-description { color: var(--text-gray); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-item { display: flex; gap: 2rem; align-items: start; }
+
+        .feature-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.4;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .feature-content p { color: var(--text-gray); line-height: 1.8; }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--teal) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></svg>');
+            background-size: 50px 50px;
+            animation: drift 60s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .final-cta-content { position: relative; z-index: 1; }
+
+        .final-cta h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta .primary-btn {
+            background: var(--white);
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 1.2rem 3rem;
+        }
+
+        .final-cta .primary-btn:hover {
+            background: var(--text-light);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-card);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(0, 217, 201, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--teal);
+        }
+
+        .footer-brand p { color: var(--text-gray); line-height: 1.7; }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.8rem; }
+
+        .footer-section ul li a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover { color: var(--teal); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(0, 217, 201, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 4rem; }
+            .hero-content { grid-template-columns: 1fr; }
+            .industry-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .industry-grid { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: 1fr; }
+            .final-cta h2 { font-size: 3rem; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a class="logo" href="index.html">FrontDesk Pro</a>
+            <div class="nav-links">
+                <a href="how-it-works.html">How It Works</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="book-demo.html">Book a Demo</a>
+                <a href="contact.html">Contact</a>
+                <a href="book-demo.html" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Your business never sleeps. <span>Neither does your AI receptionist.</span></h1>
+                    <p>FrontDesk Pro delivers intelligent, 24/7 reception services that handle calls, schedule appointments, and capture leads—automatically.</p>
+                    <div class="hero-cta">
+                        <a href="book-demo.html" class="primary-btn">Book a Demo</a>
+                        <a href="pricing.html" class="secondary-btn">View Pricing</a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Always Available</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Customer Satisfaction</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$0</span>
+                        <span class="stat-label">Missed Calls</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Fast</span>
+                        <span class="stat-label">Go-Live Setup</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="industries" id="industries">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Industries We Serve</span>
+                <h2 class="section-title">Built for your business</h2>
+                <p class="section-description">FrontDesk Pro adapts to your industry's needs with specialised AI training and workflows.</p>
+            </div>
+            <div class="industry-grid">
+                <div class="industry-card">
+                    <span class="industry-icon">🏥</span>
+                    <h3>Medical & Healthcare</h3>
+                    <p>AI receptionists that handle scheduling and enquiries with care.</p>
+                    <ul class="industry-features">
+                        <li>Appointment scheduling & reminders</li>
+                        <li>Patient intake basics</li>
+                        <li>Enquiry handling & routing</li>
+                        <li>After-hours call coverage</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <span class="industry-icon">🔧</span>
+                    <h3>Trades & Services</h3>
+                    <p>Never miss an urgent call. Capture job details and route enquiries instantly.</p>
+                    <ul class="industry-features">
+                        <li>Emergency call prioritisation</li>
+                        <li>Service qualification</li>
+                        <li>Lead capture to SMS/email</li>
+                        <li>Job scheduling support</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <span class="industry-icon">🏡</span>
+                    <h3>Real Estate</h3>
+                    <p>Capture every lead and schedule enquiries fast.</p>
+                    <ul class="industry-features">
+                        <li>Lead qualification & routing</li>
+                        <li>Booking inspections</li>
+                        <li>Property enquiry handling</li>
+                        <li>After-hours coverage</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <span class="industry-icon">💼</span>
+                    <h3>Professional Services</h3>
+                    <p>Handle intake and booking with a consistent, professional experience.</p>
+                    <ul class="industry-features">
+                        <li>Client intake</li>
+                        <li>Consult booking</li>
+                        <li>Call routing</li>
+                        <li>Lead summaries</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <span class="industry-icon">🏨</span>
+                    <h3>Hospitality</h3>
+                    <p>Manage reservations and enquiries with fast, friendly service.</p>
+                    <ul class="industry-features">
+                        <li>Reservation handling</li>
+                        <li>Special requests</li>
+                        <li>General enquiries</li>
+                        <li>After-hours calls</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <span class="industry-icon">💡</span>
+                    <h3>Custom Solutions</h3>
+                    <p>Unique workflow? We tailor the AI receptionist to your operation.</p>
+                    <ul class="industry-features">
+                        <li>Custom call flow</li>
+                        <li>Industry-specific training</li>
+                        <li>Branded experience</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why FrontDesk Pro</span>
+                <h2 class="section-title">More than just a voice on the line</h2>
+                <p class="section-description">Our AI receptionists understand context, follow your rules, and deliver a consistent customer experience.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-number">01</div>
+                    <div class="feature-content">
+                        <h3>Natural Conversations</h3>
+                        <p>Human-sounding conversations that handle real customer questions confidently.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">02</div>
+                    <div class="feature-content">
+                        <h3>Seamless Integration</h3>
+                        <p>Works with your calendar and booking workflows. We handle the setup.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">03</div>
+                    <div class="feature-content">
+                        <h3>Intelligent Routing</h3>
+                        <p>Escalates important calls, captures details, and routes to the right person.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">04</div>
+                    <div class="feature-content">
+                        <h3>Analytics & Insights</h3>
+                        <p>See call volumes and common enquiries so you can tighten scripts and improve conversion.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">05</div>
+                    <div class="feature-content">
+                        <h3>Multi-Channel Support</h3>
+                        <p>Phone-first experience with SMS/email notifications and optional web chat later.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">06</div>
+                    <div class="feature-content">
+                        <h3>Continuous Improvement</h3>
+                        <p>We fine-tune your call flow over time based on real call outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <div class="final-cta-content">
+                <h2>Ready to transform your front desk?</h2>
+                <p>Stop missing calls and start capturing every opportunity. Book a demo and we'll show you exactly how it works.</p>
+                <a href="book-demo.html" class="primary-btn">Book a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FrontDesk Pro</h3>
+                    <p>AI receptionists that work 24/7 to capture leads, support bookings, and reduce missed calls.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="book-demo.html">Book a Demo</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="index.html#industries">Healthcare</a></li>
+                        <li><a href="index.html#industries">Trades</a></li>
+                        <li><a href="index.html#industries">Real Estate</a></li>
+                        <li><a href="index.html#industries">Hospitality</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FrontDesk Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
