@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>How It Works — FrontDesk Pro</title>
+  <meta name="description" content="How FrontDesk Pro works — we configure your AI receptionist, connect your number, and deliver bookings or qualified leads to your team by SMS and email.">
+  <meta property="og:title" content="How It Works — FrontDesk Pro">
+  <meta property="og:description" content="How FrontDesk Pro works — we configure your AI receptionist, connect your number, and deliver bookings or qualified leads to your team by SMS and email.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0A0E27">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -509,6 +515,7 @@
       .footer-content{ grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 
 <body>
@@ -589,7 +596,7 @@
           <div>
             <h3>We connect your number & notifications</h3>
             <p>
-              Calls route to your AI number (Twilio), and your team receives SMS/email notifications with the details that matter.
+              Calls route to your dedicated AI number, and your team receives SMS/email notifications with the details that matter.
             </p>
             <ul>
               <li>Missed-call forwarding or after-hours forwarding</li>
@@ -773,6 +780,11 @@
         <div class="footer-brand">
           <h3>FrontDesk Pro</h3>
           <p>AI receptionists that work 24/7 to capture leads, support bookings, and reduce missed calls.</p>
+          <div class="footer-contact">
+            <a data-fdp-if="email" data-fdp-href="email" data-fdp-text="email" href="contact.html"></a>
+            <a data-fdp-if="phone" data-fdp-href="phone" data-fdp-text="phone" href="#" hidden></a>
+            <span data-fdp-if="abn" hidden>ABN <span data-fdp-text="abn"></span></span>
+          </div>
         </div>
 
         <div class="footer-section">
@@ -804,9 +816,11 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 FrontDesk Pro. All rights reserved.</p>
+        <p>&copy; <span data-year>2026</span> FrontDesk Pro. All rights reserved. Prices in AUD.</p>
       </div>
     </div>
   </footer>
+  <script src="assets/config.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

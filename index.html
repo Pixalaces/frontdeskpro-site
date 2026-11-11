@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FrontDesk Pro - AI Receptionists for Your Business</title>
+  <meta name="description" content="FrontDesk Pro — 24/7 AI receptionists for Australian medical, dental, trades, real estate and service businesses. Answer every call, book appointments and capture leads automatically.">
+  <meta property="og:title" content="FrontDesk Pro - AI Receptionists for Your Business">
+  <meta property="og:description" content="FrontDesk Pro — 24/7 AI receptionists for Australian medical, dental, trades, real estate and service businesses. Answer every call, book appointments and capture leads automatically.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0A0E27">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -276,6 +282,7 @@
         }
 
         .industry-card {
+            scroll-margin-top: 110px;
             background: var(--dark-card);
             padding: 3rem 2.5rem;
             border-radius: 20px;
@@ -507,11 +514,18 @@
             .hero h1 { font-size: 3rem; }
             .section-title { font-size: 2.5rem; }
             .industry-grid { grid-template-columns: 1fr; }
-            .hero-stats { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: 1fr 1fr; padding:1.5rem; gap:1.2rem; }
+            .stat-number { font-size: 2.2rem; }
+            .hero { padding: 5rem 0 4rem; }
+            .hero-cta { flex-wrap: wrap; }
+            .hero-cta a { flex: 1 1 100%; text-align: center; }
+            .feature-item { gap: 1rem; }
+            .feature-number { font-size: 2.6rem; }
             .final-cta h2 { font-size: 3rem; }
             .footer-content { grid-template-columns: 1fr; }
         }
     </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
     <nav>
@@ -537,23 +551,27 @@
                         <a href="book-demo.html" class="primary-btn">Book a Demo</a>
                         <a href="pricing.html" class="secondary-btn">View Pricing</a>
                     </div>
+                    <a class="demo-line" data-fdp-if="demoLine" data-fdp-href="demoLine" href="#" hidden>
+                        <span class="pulse"></span>
+                        <span>Hear it now — call our AI receptionist: <strong data-fdp-text="demoLine"></strong></span>
+                    </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-number">24/7</span>
-                        <span class="stat-label">Always Available</span>
+                        <span class="stat-label">Calls answered, incl. after-hours</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Customer Satisfaction</span>
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Callers sent to voicemail</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Days</span>
+                        <span class="stat-label">Not weeks, to go live</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number">$0</span>
-                        <span class="stat-label">Missed Calls</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">Fast</span>
-                        <span class="stat-label">Go-Live Setup</span>
+                        <span class="stat-label">Lock-in contracts</span>
                     </div>
                 </div>
             </div>
@@ -568,7 +586,7 @@
                 <p class="section-description">FrontDesk Pro adapts to your industry's needs with specialised AI training and workflows.</p>
             </div>
             <div class="industry-grid">
-                <div class="industry-card">
+                <div class="industry-card" id="medical">
                     <span class="industry-icon">🏥</span>
                     <h3>Medical & Healthcare</h3>
                     <p>AI receptionists that handle scheduling and enquiries with care.</p>
@@ -580,7 +598,7 @@
                     </ul>
                 </div>
 
-                <div class="industry-card">
+                <div class="industry-card" id="trades">
                     <span class="industry-icon">🔧</span>
                     <h3>Trades & Services</h3>
                     <p>Never miss an urgent call. Capture job details and route enquiries instantly.</p>
@@ -592,7 +610,7 @@
                     </ul>
                 </div>
 
-                <div class="industry-card">
+                <div class="industry-card" id="real-estate">
                     <span class="industry-icon">🏡</span>
                     <h3>Real Estate</h3>
                     <p>Capture every lead and schedule enquiries fast.</p>
@@ -616,7 +634,7 @@
                     </ul>
                 </div>
 
-                <div class="industry-card">
+                <div class="industry-card" id="hospitality">
                     <span class="industry-icon">🏨</span>
                     <h3>Hospitality</h3>
                     <p>Manage reservations and enquiries with fast, friendly service.</p>
@@ -702,12 +720,13 @@
         </div>
     </section>
 
-    <section class="final-cta" id="contact">
+    <section class="final-cta" id="get-started">
         <div class="container">
             <div class="final-cta-content">
                 <h2>Ready to transform your front desk?</h2>
                 <p>Stop missing calls and start capturing every opportunity. Book a demo and we'll show you exactly how it works.</p>
                 <a href="book-demo.html" class="primary-btn">Book a Demo</a>
+                <p data-fdp-if="demoLine" hidden style="margin:1.5rem auto 0;font-size:1.05rem;">Or call our AI right now: <a data-fdp-href="demoLine" data-fdp-text="demoLine" href="#" style="color:#fff;font-weight:700;"></a></p>
             </div>
         </div>
     </section>
@@ -718,6 +737,11 @@
                 <div class="footer-brand">
                     <h3>FrontDesk Pro</h3>
                     <p>AI receptionists that work 24/7 to capture leads, support bookings, and reduce missed calls.</p>
+          <div class="footer-contact">
+            <a data-fdp-if="email" data-fdp-href="email" data-fdp-text="email" href="contact.html"></a>
+            <a data-fdp-if="phone" data-fdp-href="phone" data-fdp-text="phone" href="#" hidden></a>
+            <span data-fdp-if="abn" hidden>ABN <span data-fdp-text="abn"></span></span>
+          </div>
                 </div>
                 <div class="footer-section">
                     <h4>Product</h4>
@@ -731,10 +755,10 @@
                 <div class="footer-section">
                     <h4>Industries</h4>
                     <ul>
-                        <li><a href="index.html#industries">Healthcare</a></li>
-                        <li><a href="index.html#industries">Trades</a></li>
-                        <li><a href="index.html#industries">Real Estate</a></li>
-                        <li><a href="index.html#industries">Hospitality</a></li>
+                        <li><a href="index.html#medical">Healthcare</a></li>
+                        <li><a href="index.html#trades">Trades</a></li>
+                        <li><a href="index.html#real-estate">Real Estate</a></li>
+                        <li><a href="index.html#hospitality">Hospitality</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -746,9 +770,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 FrontDesk Pro. All rights reserved.</p>
+                <p>&copy; <span data-year>2026</span> FrontDesk Pro. All rights reserved. Prices in AUD.</p>
             </div>
         </div>
     </footer>
+  <script src="assets/config.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

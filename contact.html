@@ -1,10 +1,15 @@
-<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Contact — FrontDesk Pro</title>
+  <meta name="description" content="Contact FrontDesk Pro about AI receptionist setup, pricing or support for your Australian business.">
+  <meta property="og:title" content="Contact — FrontDesk Pro">
+  <meta property="og:description" content="Contact FrontDesk Pro about AI receptionist setup, pricing or support for your Australian business.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0A0E27">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -96,6 +101,7 @@
     @media (max-width:1024px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.footer-content{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:768px){.nav-links{display:none}.footer-content{grid-template-columns:1fr}}
   </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
   <nav>
@@ -125,12 +131,14 @@
         </div>
 
         <div class="card">
-          <h3>Quick options</h3>
-          <p class="muted">Prefer not to fill out a form? Use one of these.</p>
+          <h3>Talk to us directly</h3>
+          <p class="muted"><span data-fdp-if="contactName" hidden>You'll deal with <strong style="color:var(--text-light)" data-fdp-text="contactName"></strong> — no call centres. </span>Prefer not to fill out a form? Use one of these.</p>
           <ul class="list">
+            <li><span class="icon">✉</span><div><strong>Email</strong><div class="muted"><a data-fdp-href="email" data-fdp-text="email" href="mailto:support@frontdeskpro.com.au" style="color:var(--teal);text-decoration:none;font-weight:600;">support@frontdeskpro.com.au</a></div></div></li>
+            <li data-fdp-if="phone" hidden><span class="icon">☎</span><div><strong>Phone</strong><div class="muted"><a data-fdp-href="phone" data-fdp-text="phone" href="#" style="color:var(--teal);text-decoration:none;font-weight:600;"></a> · Mon–Fri, business hours</div></div></li>
+            <li data-fdp-if="demoLine" hidden><span class="icon">▶</span><div><strong>Hear the AI live</strong><div class="muted">Call <a data-fdp-href="demoLine" data-fdp-text="demoLine" href="#" style="color:var(--teal);text-decoration:none;font-weight:600;"></a> any time</div></div></li>
             <li><span class="icon">✓</span><div><strong>Book a demo</strong><div class="muted"><a href="book-demo.html" style="color:var(--teal);text-decoration:none;font-weight:600;">Choose a time here</a></div></div></li>
-            <li><span class="icon">✓</span><div><strong>Email</strong><div class="muted">support@frontdeskpro.com.au</div></div></li>
-            <li><span class="icon">✓</span><div><strong>Response time</strong><div class="muted">Typically within 1 business day</div></div></li>
+            <li><span class="icon">⏱</span><div><strong>Response time</strong><div class="muted">Typically within 1 business day</div></div></li>
           </ul>
         </div>
 
@@ -146,13 +154,12 @@
           <h2>Send a message</h2>
           <p>We'll reply with next steps and any questions needed to configure your AI receptionist.</p>
 
-          <!-- NOTE: This is static HTML. Wire it to your backend/form tool later. -->
-          <form action="#" method="post">
+          <form class="fdp-form" data-subject="Website enquiry">
             <label for="name">Full name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required>
+            <input id="name" name="name" autocomplete="name" type="text" placeholder="Your name" required>
 
             <label for="business">Business name</label>
-            <input id="business" name="business" type="text" placeholder="Clinic / business name" required>
+            <input id="business" name="business" autocomplete="organization" type="text" placeholder="Clinic / business name" required>
 
             <label for="industry">Industry</label>
             <select id="industry" name="industry" required>
@@ -162,20 +169,24 @@
               <option>Allied Health</option>
               <option>Trades</option>
               <option>Real Estate</option>
+              <option>Professional Services</option>
+              <option>Hospitality</option>
               <option>Other</option>
             </select>
 
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@company.com" required>
+            <input id="email" name="email" autocomplete="email" type="email" placeholder="you@company.com" required>
 
             <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" placeholder="04xx xxx xxx" required>
+            <input id="phone" name="phone" autocomplete="tel" type="tel" placeholder="04xx xxx xxx" required>
 
             <label for="message">What do you want the AI receptionist to handle?</label>
             <textarea id="message" name="message" placeholder="Bookings, FAQs, after-hours, missed calls, lead capture..." required></textarea>
 
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
             <button class="btn" type="submit">Send Message</button>
-            <div class="small">By submitting, you agree we may contact you about your enquiry.</div>
+            <div class="form-status" role="status" aria-live="polite"></div>
+            <div class="small">By submitting, you agree we may contact you about your enquiry. See our <a href="privacy.html" style="color:var(--teal)">Privacy Policy</a>.</div>
           </form>
         </section>
 
@@ -206,6 +217,11 @@
         <div class="footer-brand">
           <h3>FrontDesk Pro</h3>
           <p>AI receptionists that work 24/7 to capture leads, support bookings, and reduce missed calls.</p>
+          <div class="footer-contact">
+            <a data-fdp-if="email" data-fdp-href="email" data-fdp-text="email" href="contact.html"></a>
+            <a data-fdp-if="phone" data-fdp-href="phone" data-fdp-text="phone" href="#" hidden></a>
+            <span data-fdp-if="abn" hidden>ABN <span data-fdp-text="abn"></span></span>
+          </div>
         </div>
         <div class="footer-section">
           <h4>Product</h4>
@@ -233,9 +249,11 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 FrontDesk Pro. All rights reserved.</p>
+        <p>&copy; <span data-year>2026</span> FrontDesk Pro. All rights reserved. Prices in AUD.</p>
       </div>
     </div>
   </footer>
+  <script src="assets/config.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

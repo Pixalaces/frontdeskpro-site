@@ -5,6 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Terms of Service — FrontDesk Pro</title>
+  <meta name="description" content="FrontDesk Pro terms of service.">
+  <meta property="og:title" content="Terms of Service — FrontDesk Pro">
+  <meta property="og:description" content="FrontDesk Pro terms of service.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0A0E27">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -67,6 +73,7 @@
     .footerBottom{text-align:center;color:var(--text-gray)}
     @media (max-width:768px){.nav-links{display:none}.paper{padding:1.4rem}}
   </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
   <nav>
@@ -193,7 +200,8 @@
         </p>
 
         <h2>15. Contact</h2>
-        <p class="muted"><strong>Email:</strong> support@frontdeskpro.com.au</p>
+        <p class="muted"><strong>Email:</strong> <a data-fdp-href="email" data-fdp-text="email" href="mailto:support@frontdeskpro.com.au" style="color:var(--teal)">support@frontdeskpro.com.au</a></p>
+        <p class="muted" data-fdp-if="phone" hidden><strong>Phone:</strong> <a data-fdp-href="phone" data-fdp-text="phone" href="#" style="color:var(--teal)"></a></p>
 
         <p class="muted" style="margin-top:1.2rem;">
           These Terms are general and do not constitute legal advice. Consider obtaining legal advice to tailor them to your exact operating model and jurisdiction.
@@ -205,8 +213,10 @@
 
   <footer>
     <div class="container">
-      <div class="footerBottom">&copy; 2026 FrontDesk Pro. All rights reserved.</div>
+      <div class="footerBottom">&copy; <span data-year>2026</span> FrontDesk Pro. All rights reserved.<span data-fdp-if="abn" hidden> · ABN <span data-fdp-text="abn"></span></span> · <a href="privacy.html" style="color:inherit">Privacy</a> · <a href="terms.html" style="color:inherit">Terms</a></div>
     </div>
   </footer>
+  <script src="assets/config.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

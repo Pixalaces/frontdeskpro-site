@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Book a Demo — FrontDesk Pro</title>
+  <meta name="description" content="Book a 20-minute FrontDesk Pro demo. Hear a live AI receptionist call and see how bookings and lead notifications work for your business.">
+  <meta property="og:title" content="Book a Demo — FrontDesk Pro">
+  <meta property="og:description" content="Book a 20-minute FrontDesk Pro demo. Hear a live AI receptionist call and see how bookings and lead notifications work for your business.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0A0E27">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -199,6 +205,7 @@
       .footer-content{grid-template-columns: 1fr;}
     }
   </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
@@ -219,11 +226,15 @@
     <div class="container">
       <div class="hero-inner">
         <div>
-          <h1>Book a demo in <span>10 minutes</span></h1>
+          <h1>Book your <span>free demo</span></h1>
           <p>
             See a real call flow, how bookings work, and how leads get delivered to your team.
             We'll recommend the best plan for your business — no pressure.
           </p>
+          <a class="demo-line" data-fdp-if="demoLine" data-fdp-href="demoLine" href="#" hidden>
+            <span class="pulse"></span>
+            <span>Can't wait? Call our AI receptionist now: <strong data-fdp-text="demoLine"></strong></span>
+          </a>
         </div>
 
         <div class="card">
@@ -246,38 +257,53 @@
       <div class="grid">
 
         <section class="panel">
-          <h2>Choose a time</h2>
-          <p>Pick a slot that suits you. We'll confirm by email and send any prep details.</p>
-
-          <!-- Cal.com Embed -->
-          <div style="width:100%;min-height:620px;border-radius:16px;overflow:hidden;">
-            <iframe
-              src="https://cal.com/YOUR-USERNAME/30min"
-              style="width:100%;height:650px;border:0;border-radius:16px;"
-              title="Book a Demo with FrontDesk Pro"
-              frameborder="0"
-              loading="lazy"
-            ></iframe>
+          <!-- Live calendar (shown when bookingLink is set in assets/config.js) -->
+          <div data-fdp-if="bookingLink" hidden>
+            <h2>Choose a time</h2>
+            <p>Pick a slot that suits you. You'll get an instant calendar invite with the details.</p>
+            <div id="cal-inline"></div>
           </div>
-          
-          <!-- 
-          ✅ INSTRUCTIONS: Replace "YOUR-USERNAME" above with your actual Cal.com username
-          Example: https://cal.com/johndoe/30min
-          
-          Alternative: Cal.com inline embed (for more customization)
-          1. Uncomment the code below
-          2. Replace YOUR-USERNAME
-          3. Comment out or remove the iframe above
-          
-          <div 
-            data-cal-link="YOUR-USERNAME/30min"
-            data-cal-config='{"layout":"month_view"}'
-            style="width:100%;min-height:620px;"
-          ></div>
-          <script type="text/javascript">
-            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init"); Cal("init", {origin:"https://cal.com"});
-          </script>
-          -->
+
+          <!-- Request-a-time form (shown until a calendar link is set) -->
+          <div data-fdp-if="!bookingLink">
+            <h2>Request a time</h2>
+            <p>Tell us when suits and we'll confirm your demo by email or phone — usually the same business day.</p>
+
+            <form class="fdp-form" data-subject="Demo request" data-success="Thanks — your demo request is in. We'll confirm a time with you shortly (usually the same business day).">
+              <div class="row">
+                <div><label for="d-name">Full name</label><input id="d-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div>
+                <div><label for="d-business">Business name</label><input id="d-business" name="business" type="text" autocomplete="organization" placeholder="Clinic / business name" required></div>
+              </div>
+              <div class="row">
+                <div><label for="d-email">Email</label><input id="d-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required></div>
+                <div><label for="d-phone">Phone</label><input id="d-phone" name="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx" required></div>
+              </div>
+              <div class="row">
+                <div>
+                  <label for="d-industry">Industry</label>
+                  <select id="d-industry" name="industry" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option>Dental</option><option>Medical</option><option>Allied Health</option>
+                    <option>Trades</option><option>Real Estate</option><option>Professional Services</option>
+                    <option>Hospitality</option><option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="d-when">Best time</label>
+                  <select id="d-when" name="preferred_time" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option>Weekday morning</option><option>Weekday midday</option>
+                    <option>Weekday afternoon</option><option>Anytime — call me</option>
+                  </select>
+                </div>
+              </div>
+              <label for="d-notes">Anything we should know? <span class="muted" style="font-weight:400">(optional)</span></label>
+              <textarea id="d-notes" name="notes" placeholder="e.g. 3 dentists, lots of after-hours calls, want online booking"></textarea>
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+              <button class="btn" type="submit">Request My Demo</button>
+              <div class="form-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
         </section>
 
         <aside class="panel">
@@ -310,8 +336,9 @@
           <div style="margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.10);">
             <div class="muted">
               Prefer to talk first?
-              <a href="contact.html" style="color:var(--teal);text-decoration:none;font-weight:600;">Contact us</a>
-              and we'll organise a time.
+              <span data-fdp-if="phone" hidden>Call <a data-fdp-href="phone" data-fdp-text="phone" href="#" style="color:var(--teal);text-decoration:none;font-weight:600;"></a>, email</span><span data-fdp-if="!phone">Email</span>
+              <a data-fdp-href="email" data-fdp-text="email" href="contact.html" style="color:var(--teal);text-decoration:none;font-weight:600;">us</a>
+              or use the <a href="contact.html" style="color:var(--teal);text-decoration:none;font-weight:600;">contact form</a>.
             </div>
           </div>
         </aside>
@@ -326,6 +353,11 @@
         <div class="footer-brand">
           <h3>FrontDesk Pro</h3>
           <p>AI receptionists that work 24/7 to capture leads, support bookings, and reduce missed calls.</p>
+          <div class="footer-contact">
+            <a data-fdp-if="email" data-fdp-href="email" data-fdp-text="email" href="contact.html"></a>
+            <a data-fdp-if="phone" data-fdp-href="phone" data-fdp-text="phone" href="#" hidden></a>
+            <span data-fdp-if="abn" hidden>ABN <span data-fdp-text="abn"></span></span>
+          </div>
         </div>
 
         <div class="footer-section">
@@ -357,10 +389,12 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 FrontDesk Pro. All rights reserved.</p>
+        <p>&copy; <span data-year>2026</span> FrontDesk Pro. All rights reserved. Prices in AUD.</p>
       </div>
     </div>
   </footer>
 
+  <script src="assets/config.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

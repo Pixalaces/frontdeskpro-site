@@ -1,0 +1,77 @@
+/* Shared additions — same palette & type as the original pages */
+
+/* ---------- Mobile menu ---------- */
+.menu-toggle{
+  display:none;background:none;border:1px solid rgba(0,217,201,.25);
+  border-radius:12px;width:44px;height:44px;cursor:pointer;
+  align-items:center;justify-content:center;flex-direction:column;gap:5px;
+}
+.menu-toggle span{display:block;width:20px;height:2px;background:#E8EDF5;border-radius:2px;transition:transform .3s,opacity .3s}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+@media (max-width:768px){
+  nav{padding:1rem 0 !important}
+  .menu-toggle{display:inline-flex}
+  nav .nav-links.open{
+    display:flex !important;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;
+    background:rgba(10,14,39,.98);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(0,217,201,.15);padding:.5rem 1.5rem 1.5rem;
+  }
+  nav .nav-links.open a{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:1.05rem}
+  nav .nav-links.open a.cta-button{margin-top:1rem;border-bottom:0;justify-content:center;padding:1rem}
+  .hero{margin-top:70px !important}
+}
+
+/* ---------- Live demo line pill ---------- */
+.demo-line{
+  display:inline-flex;align-items:center;gap:.75rem;margin-top:1.5rem;
+  padding:.7rem 1.2rem .7rem .8rem;border-radius:999px;text-decoration:none;
+  background:rgba(0,217,201,.08);border:1px solid rgba(0,217,201,.28);color:#E8EDF5;
+  font-weight:500;transition:all .3s;
+}
+.demo-line:hover{background:rgba(0,217,201,.15);transform:translateY(-2px)}
+.demo-line strong{color:#00D9C9;white-space:nowrap}
+.pulse{width:10px;height:10px;border-radius:50%;background:#00D9C9;box-shadow:0 0 0 0 rgba(0,217,201,.6);animation:pulse 1.8s infinite;flex:0 0 auto}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,217,201,.6)}70%{box-shadow:0 0 0 12px rgba(0,217,201,0)}100%{box-shadow:0 0 0 0 rgba(0,217,201,0)}}
+
+/* ---------- Forms (shared) ---------- */
+.fdp-form label{display:block;font-weight:600;margin:.75rem 0 .35rem}
+.fdp-form input,.fdp-form select,.fdp-form textarea{
+  width:100%;background:rgba(10,14,39,.45);border:1px solid rgba(255,255,255,.12);
+  color:#E8EDF5;padding:.9rem 1rem;border-radius:14px;outline:none;font-family:inherit;font-size:1rem;
+}
+.fdp-form select option{background:#131829}
+.fdp-form textarea{min-height:120px;resize:vertical}
+.fdp-form input:focus,.fdp-form select:focus,.fdp-form textarea:focus{border-color:rgba(0,217,201,.4);box-shadow:0 0 0 3px rgba(0,217,201,.12)}
+.fdp-form .row{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+@media (max-width:600px){.fdp-form .row{grid-template-columns:1fr}}
+.fdp-form .btn{
+  margin-top:1.2rem;width:100%;border:0;border-radius:999px;padding:1rem 1.6rem;font-weight:700;cursor:pointer;
+  background:linear-gradient(135deg,#0066FF,#00D9C9);color:#fff;transition:all .3s;font-size:1rem;font-family:inherit;
+}
+.fdp-form .btn:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(0,217,201,.35)}
+.fdp-form .btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.fdp-form .hp{position:absolute;left:-9999px}
+.form-status{margin-top:1rem;padding:1rem 1.1rem;border-radius:14px;display:none;font-size:.98rem}
+.form-status.ok{display:block;background:rgba(0,217,201,.1);border:1px solid rgba(0,217,201,.35);color:#E8EDF5}
+.form-status.err{display:block;background:rgba(255,99,99,.08);border:1px solid rgba(255,99,99,.35);color:#ffd6d6}
+
+/* ---------- Contact details list ---------- */
+.contact-lines{list-style:none;display:grid;gap:.6rem;margin-top:1rem}
+.contact-lines a{color:#00D9C9;text-decoration:none;font-weight:600}
+.contact-lines a:hover{text-decoration:underline}
+.footer-contact{margin-top:1.2rem;display:grid;gap:.35rem;font-size:.95rem}
+.footer-contact a{color:#9CA3B8;text-decoration:none}
+.footer-contact a:hover{color:#00D9C9}
+.footer-legal{margin-top:.4rem;font-size:.85rem;opacity:.8}
+
+/* ---------- Cal embed ---------- */
+#cal-inline{width:100%;min-height:640px;border-radius:16px;overflow:auto}
+
+/* Pricing card hover was jumpy (no transition) */
+.pricing-card{transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s,border-color .4s}
+
+[hidden]{display:none !important}
