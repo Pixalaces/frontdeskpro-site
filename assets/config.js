@@ -16,7 +16,7 @@ window.FDP = {
   // Booking — your Cal.com link WITHOUT https://cal.com/
   // e.g. "chris-frontdeskpro/demo"  → real calendar embedded on Book a Demo
   // Leave "" and the page shows a request-a-time form instead (still works).
-  bookingLink: "",
+  bookingLink: "chris-pin-g3pnkw/receptionist-demo",
 
   // Form delivery — free key from https://web3forms.com (enter your email, they send a key)
   // Leave "" and forms open the visitor's email app pre-filled instead (still works).
