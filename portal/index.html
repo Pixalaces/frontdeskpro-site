@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Client Portal — FrontDesk Pro</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0E27">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <a class="logo" href="../index.html">FrontDesk Pro</a>
+      <div class="nav-right">
+        <span id="who" class="who"></span>
+        <button id="signout" class="ghost small" hidden>Sign out</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login -->
+  <main id="login-view" class="center-wrap" hidden>
+    <div class="card login-card">
+      <h1>Client <span>portal</span></h1>
+      <p class="muted">Enter the email address you gave FrontDesk Pro. We'll email you a secure sign-in link, so there's no password to remember.</p>
+      <form id="login-form">
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" autocomplete="email" placeholder="you@business.com.au" required>
+        <button class="btn" type="submit">Email me a sign-in link</button>
+      </form>
+      <div id="login-status" class="status" role="status" aria-live="polite"></div>
+      <p class="muted small mt">Not a client yet? <a href="../book-demo.html">Book a demo</a></p>
+    </div>
+  </main>
+
+  <!-- No access -->
+  <main id="noaccess-view" class="center-wrap" hidden>
+    <div class="card login-card">
+      <h1>Almost <span>there</span></h1>
+      <p class="muted">You're signed in, but this email isn't linked to a business yet. Contact Chris on <a href="tel:0467660980">0467 660 980</a> and we'll connect your account.</p>
+    </div>
+  </main>
+
+  <!-- App -->
+  <main id="app-view" hidden>
+    <header class="app-head">
+      <div class="container head-row">
+        <div>
+          <div class="eyebrow">Client portal</div>
+          <h1 id="client-name">—</h1>
+        </div>
+        <div class="head-actions">
+          <select id="client-switch" hidden aria-label="Switch client"></select>
+          <button id="new-client" class="ghost small" hidden>+ New client</button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="tabs" role="tablist">
+          <button role="tab" data-tab="overview" class="active">Overview</button>
+          <button role="tab" data-tab="team">Team &amp; leave</button>
+          <button role="tab" data-tab="services">Services</button>
+          <button role="tab" data-tab="hours">Hours &amp; closures</button>
+          <button role="tab" data-tab="calls">Calls</button>
+          <button role="tab" data-tab="requests">Requests <span id="req-badge" class="badge" hidden></span></button>
+          <button role="tab" data-tab="settings" id="tab-settings" hidden>Settings</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container panels">
+
+      <!-- Overview -->
+      <section data-panel="overview">
+        <div class="stats">
+          <div class="stat"><div class="stat-label">Right now</div><div class="stat-value" id="ov-open">—</div></div>
+          <div class="stat"><div class="stat-label">Away today</div><div class="stat-value" id="ov-away">—</div></div>
+          <div class="stat"><div class="stat-label">Calls this month</div><div class="stat-value" id="ov-calls">—</div></div>
+          <div class="stat"><div class="stat-label">Minutes used</div><div class="stat-value" id="ov-mins">—</div><div class="meter"><span id="ov-meter"></span></div></div>
+        </div>
+        <div class="grid2">
+          <div class="panel">
+            <h2>Message for callers</h2>
+            <p class="muted">Anything your receptionist should tell callers right now, e.g. "Car park closed for works, please park on Smith St". It's used from the next call. Leave it empty when there's nothing to say.</p>
+            <textarea id="notice" rows="4" maxlength="500" placeholder="No special message"></textarea>
+            <div class="row-end"><button class="btn small" id="save-notice">Save message</button></div>
+            <div class="status" id="notice-status"></div>
+          </div>
+          <div class="panel">
+            <h2>Recent calls</h2>
+            <div id="ov-recent" class="list"></div>
+            <div class="row-end"><button class="ghost small" data-goto="calls">All calls →</button></div>
+          </div>
+        </div>
+        <div class="panel mt">
+          <h2>How this works</h2>
+          <div class="how">
+            <div><strong>Change it yourself</strong><span>Staff leave, services, opening hours, closures and caller messages. Your AI receptionist uses the new details from the very next call.</span></div>
+            <div><strong>Ask FrontDesk Pro</strong><span>New scripts, call flows, transfers or anything bigger. Send a request and we'll handle it, usually within 1 business day.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team -->
+      <section data-panel="team" hidden>
+        <div class="grid2">
+          <div class="panel">
+            <h2>Mark someone as away</h2>
+            <p class="muted">Your receptionist won't book them while they're away, and will offer someone else or a date after they're back.</p>
+            <form id="away-form" class="form">
+              <label>Who</label>
+              <select name="staff_id" required></select>
+              <div class="row2">
+                <div><label>From</label><input type="date" name="starts_on" required></div>
+                <div><label>Back after</label><input type="date" name="ends_on" required></div>
+              </div>
+              <label>Note <span class="muted">(optional)</span></label>
+              <input name="note" maxlength="120" placeholder="e.g. Annual leave, conference">
+              <button class="btn" type="submit">Save leave</button>
+            </form>
+            <div class="status" id="away-status"></div>
+            <h3 class="mt">Current &amp; upcoming leave</h3>
+            <div id="away-list" class="list"></div>
+          </div>
+          <div class="panel">
+            <h2>Your team</h2>
+            <p class="muted">People your receptionist can book with or mention to callers.</p>
+            <div id="staff-list" class="list"></div>
+            <form id="staff-form" class="form inline-form">
+              <input name="name" placeholder="Name" maxlength="80" required>
+              <input name="role" placeholder="Role (e.g. Dentist)" maxlength="60">
+              <button class="btn small" type="submit">Add</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section data-panel="services" hidden>
+        <div class="panel">
+          <h2>Services</h2>
+          <p class="muted">Switch a service off and your receptionist will stop booking it (it'll take a message instead). Switch it back on any time.</p>
+          <div id="svc-list" class="list"></div>
+          <form id="svc-form" class="form inline-form">
+            <input name="name" placeholder="Service name" maxlength="80" required>
+            <input name="duration_min" type="number" min="5" max="600" step="5" placeholder="Minutes">
+            <input name="notes" placeholder="Note for the AI (optional)" maxlength="140">
+            <button class="btn small" type="submit">Add service</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Hours -->
+      <section data-panel="hours" hidden>
+        <div class="grid2">
+          <div class="panel">
+            <h2>Opening hours</h2>
+            <div id="hours-table" class="hours"></div>
+            <div class="row-end"><button class="btn small" id="save-hours">Save hours</button></div>
+            <div class="status" id="hours-status"></div>
+          </div>
+          <div class="panel">
+            <h2>Closures &amp; public holidays</h2>
+            <p class="muted">Callers are told you're closed and when you're back.</p>
+            <form id="closure-form" class="form">
+              <div class="row2">
+                <div><label>From</label><input type="date" name="starts_on" required></div>
+                <div><label>To</label><input type="date" name="ends_on" required></div>
+              </div>
+              <label>Reason <span class="muted">(optional)</span></label>
+              <input name="reason" maxlength="80" placeholder="e.g. Christmas break">
+              <button class="btn" type="submit">Add closure</button>
+            </form>
+            <div class="status" id="closure-status"></div>
+            <div id="closure-list" class="list mt"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Calls -->
+      <section data-panel="calls" hidden>
+        <div class="panel">
+          <h2>Calls</h2>
+          <p class="muted">Every call your receptionist answered, newest first. Tap a call to read the transcript.</p>
+          <div id="calls-list" class="list"></div>
+          <div class="row-end"><button class="ghost small" id="calls-more" hidden>Load more</button></div>
+        </div>
+      </section>
+
+      <!-- Requests -->
+      <section data-panel="requests" hidden>
+        <div class="grid2">
+          <div class="panel">
+            <h2>Ask FrontDesk Pro</h2>
+            <p class="muted">For anything you can't change yourself. We'll reply by email or phone.</p>
+            <form id="req-form" class="form">
+              <label>What's it about?</label>
+              <select name="category" required>
+                <option>Change the greeting or script</option>
+                <option>New service or booking rule</option>
+                <option>Call transfers &amp; urgent calls</option>
+                <option>Notifications (SMS / email)</option>
+                <option>Plan or billing</option>
+                <option>Something's not working</option>
+                <option>Other</option>
+              </select>
+              <label>Details</label>
+              <textarea name="details" rows="5" maxlength="3000" required placeholder="Tell us what you'd like changed"></textarea>
+              <button class="btn" type="submit">Send request</button>
+            </form>
+            <div class="status" id="req-status"></div>
+          </div>
+          <div class="panel">
+            <h2>Your requests</h2>
+            <div id="req-list" class="list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings (admin) -->
+      <section data-panel="settings" hidden>
+        <div class="grid2">
+          <div class="panel">
+            <h2>Client details</h2>
+            <form id="client-form" class="form">
+              <label>Business name</label><input name="name" required>
+              <div class="row2">
+                <div><label>Industry</label><input name="industry"></div>
+                <div><label>Time zone</label>
+                  <select name="timezone">
+                    <option>Australia/Melbourne</option><option>Australia/Sydney</option><option>Australia/Brisbane</option>
+                    <option>Australia/Adelaide</option><option>Australia/Perth</option><option>Australia/Hobart</option><option>Australia/Darwin</option>
+                  </select></div>
+              </div>
+              <div class="row2">
+                <div><label>Plan</label><select name="plan"><option>Starter</option><option>Pro</option><option>Premium</option></select></div>
+                <div><label>Minutes / month</label><input name="plan_minutes" type="number" min="0"></div>
+              </div>
+              <div class="row2">
+                <div><label>AI phone number</label><input name="phone_number" placeholder="+61..."></div>
+                <div><label>Retell agent ID</label><input name="retell_agent_id" placeholder="agent_..."></div>
+              </div>
+              <button class="btn" type="submit">Save details</button>
+            </form>
+            <div class="status" id="client-status"></div>
+          </div>
+          <div class="panel">
+            <h2>Portal logins</h2>
+            <p class="muted">Emails that can sign in to this client's portal.</p>
+            <div id="invite-list" class="list"></div>
+            <form id="invite-form" class="form inline-form">
+              <input name="email" type="email" placeholder="owner@business.com.au" required>
+              <button class="btn small" type="submit">Give access</button>
+            </form>
+            <h2 class="mt">Connect Retell</h2>
+            <p class="muted">Use this private link for this client's number. Keep it secret: anyone with it can read this client's settings.</p>
+            <div class="copyrow"><input id="ai-url" readonly><button class="ghost small" id="copy-ai">Copy</button></div>
+            <ol class="steps">
+              <li><strong>Phone Numbers</strong> → the client's number → turn on <em>Inbound call webhook</em> → paste the link.</li>
+              <li><strong>Agent</strong> → <em>Webhook URL</em> → paste the same link (saves every call here).</li>
+              <li>In the agent prompt add: <code>{{business_context}}</code></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- New client dialog -->
+  <dialog id="new-client-dialog">
+    <form method="dialog" id="new-client-form" class="form">
+      <h2>New client</h2>
+      <label>Business name</label><input name="name" required>
+      <label>Industry</label><input name="industry" placeholder="Dental, Trades, Real Estate…">
+      <label>Owner's email (gets portal access)</label><input name="email" type="email">
+      <div class="row-end gap">
+        <button class="ghost small" value="cancel" formnovalidate>Cancel</button>
+        <button class="btn small" value="ok">Create</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="portal.js"></script>
+</body>
+</html>
