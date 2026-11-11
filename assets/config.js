@@ -5,9 +5,9 @@
    ========================================================= */
 window.FDP = {
   // Who people deal with
-  contactName: "",                         // e.g. "Chris" — shown on Contact page
+  contactName: "Chris",                       // e.g. "Chris" — shown on Contact page
   email: "support@frontdeskpro.com.au",    // must be an inbox you actually receive
-  phone: "",                               // your mobile/office, e.g. "0400 000 000"
+  phone: "0467 660 980",                     // your mobile/office, e.g. "0400 000 000"
   abn: "",                                 // e.g. "12 345 678 901" — shown in footer
 
   // "Call our AI receptionist" live demo line (your Retell number)
